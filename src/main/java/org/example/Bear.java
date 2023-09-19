@@ -22,4 +22,8 @@ public class Bear {
     public void eat(Salmon salmon) {
         belly.add(salmon);
     }
+
+    public void eatFishFromRiver(River river) {
+        this.eat(river.removeFish());
+    }
 }

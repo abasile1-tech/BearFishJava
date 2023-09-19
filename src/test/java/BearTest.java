@@ -1,15 +1,21 @@
 import org.example.Bear;
+import org.example.River;
 import org.example.Salmon;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class BearTest {
-    private Bear bear;
 
+    private Bear bear;
+    private Salmon salmon;
+    private River river; //ADDED
     @Before
     public void before() {
         bear = new Bear("Charmin'");
+        salmon = new Salmon();
+        river = new River();    // ADDED
+        river.add(salmon);  // ADDED
     }
 
     @Test
@@ -18,14 +24,13 @@ public class BearTest {
     }
 
     @Test
-    public void bellyStartsEmpty() {
+    public void bellyStartsEmpty(){
         assertEquals(0, bear.foodCount());
     }
 
     @Test
-    public void canEatFish() {
-        Salmon salmon = new Salmon();
-        bear.eat(salmon);
-        assertEquals(1, bear.foodCount());
+    public void canEatSalmon(){
+        bear.eatFishFromRiver(river); //AMENDED
+        assertEquals(0, river.getFishCount());
     }
 }
