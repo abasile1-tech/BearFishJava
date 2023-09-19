@@ -18,4 +18,8 @@ public class Bear {
     public int foodCount() {
         return belly.size();
     }
+
+    public void eat(Salmon salmon) {
+        belly.add(salmon);
+    }
 }
